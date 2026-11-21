@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}</script>
-<title>حسن وآلاء — دعوة زفاف</title>
+<title>حسن و آلاء — دعوة زفاف</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&family=Reem+Kufi:wght@400;500;600;700&family=El+Messiri:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -411,7 +411,7 @@ html:not(.on) #page{visibility:hidden}
    <p class="bsm">بسم الله الرحمن الرحيم</p>
    <p class="vs">«وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»</p>
    <p class="fam">بمشاركة عائلتيهما</p>
-   <h1 class="names">حسن وآلاء</h1>
+   <h1 class="names">حسن و آلاء</h1>
    <p class="inv">يدعوانكم لحضور حفل زفافهما</p>
    <p class="wl">ننتظركم لنشاركنا أجمل أيام العمر</p>
   </div></div>
@@ -471,7 +471,7 @@ html:not(.on) #page{visibility:hidden}
  <p class="th">وجودكم يكمّل فرحتنا</p>
  <p class="ht">#حسن_وآلاء</p>
 </div></section>
-<section class="s4" id="card2"><div class="cw"><div class="cwi"><img alt="" src="img-11.webp"><div class="cc" id="cc"><img class="rg" alt="" src="img-12.webp"><p class="big">بانتظاركم</p><p class="sub">نسأل الله أن يجمع بيننا بالخير، وأن يبارك لنا في بداية رحلتنا معًا. ويسعدنا أن تكونوا أول من يشاركنا هذه الفرحة، فمحبتكم ودعواتكم سندٌ لنا ونورٌ في طريقنا.</p><div class="rule"></div><p class="nm">حسن وآلاء</p></div></div></div></section>
+<section class="s4" id="card2"><div class="cw"><div class="cwi"><img alt="" src="img-11.webp"><div class="cc" id="cc"><img class="rg" alt="" src="img-12.webp"><p class="big">بانتظاركم</p><p class="sub">نسأل الله أن يجمع بيننا بالخير، وأن يبارك لنا في بداية رحلتنا معًا. ويسعدنا أن تكونوا أول من يشاركنا هذه الفرحة، فمحبتكم ودعواتكم سندٌ لنا ونورٌ في طريقنا.</p><div class="rule"></div><p class="nm">حسن و آلاء</p></div></div></div></section>
 </div>
 <script>
 var v=document.getElementById('vid'),p=document.getElementById('pic'),c=document.getElementById('card'),vl=document.getElementById('veil');
@@ -573,7 +573,7 @@ function mk(){
   var d=document.createElement('div');d.className='strip';
   var r=((Math.random()*4)-2).toFixed(2)+'deg';d.style.setProperty('--r',r);d._r=r;
   for(var i=0;i<3;i++){var fr=document.createElement('div');fr.className='fr';var im=new Image();im.alt='';im.src=P[(i+off)%P.length];fr.appendChild(im);d.appendChild(fr)}
-  var c=document.createElement('div');c.className='cap';c.innerHTML='حسن وآلاء<i>٦ . ١٢ . ٢٠٢٦</i>';d.appendChild(c);
+  var c=document.createElement('div');c.className='cap';c.innerHTML='حسن و آلاء<i>٦ . ١٢ . ٢٠٢٦</i>';d.appendChild(c);
   d.style.transform='translateY(-101%) rotate('+r+')';
   return d}
 function T(y,r){return 'translateY('+y+') rotate('+r+')'}
@@ -678,25 +678,30 @@ tick();setInterval(tick,1000);
 (function(){
 /* ===== تأكيد الحضور =====
    لربطه بجوجل شيت: ضع رابط Apps Script (Web App) هنا. لو فاضي، الرسالة بتظهر للضيف بس من غير إرسال. */
-var SHEET_URL='';
+var SHEET_URL='https://script.google.com/macros/s/AKfycbwdhqOzjYv8qV60_OOsJ1qclOMMbsuEuqPsn_Ny09NZtrMnlqmtn0mCdLfXf8nH-Pht/exec';
 var f=document.getElementById('rsvpForm');
-if(f){f.addEventListener('submit',function(e){
+if(f){var sending=0;f.addEventListener('submit',function(e){
  e.preventDefault();
- var nm=f.elements.name.value.trim(),at=f.elements.attendance.value,ms=f.elements.message.value.trim();
+ if(sending)return;
+ var nm=f.elements.name.value.trim(),ms=f.elements.message.value.trim(),at='';
+ var r=f.querySelector('input[name="attendance"]:checked');if(r)at=r.value;
  var er=document.getElementById('rsvpErr'),ok=document.getElementById('rsvpOk'),bt=document.getElementById('rsvpSend');
  if(!nm){er.textContent='من فضلك اكتب اسمك';er.hidden=false;f.elements.name.focus();return}
  if(!at){er.textContent='من فضلك اختر: هل ستحضر؟';er.hidden=false;return}
- er.hidden=true;bt.disabled=true;
+ er.hidden=true;sending=1;bt.disabled=true;
  var done=function(){
   var yes=at.indexOf('سأحضر')===0;
   ok.textContent=yes?'شكرًا يا '+nm+'، تم تأكيد حضورك. ننتظرك بإذن الله ♡':'شكرًا يا '+nm+'، وصلنا اعتذارك. سنفتقدك وندعو لك بالخير ♡';
   ok.hidden=false;bt.hidden=true;
   Array.prototype.forEach.call(f.querySelectorAll('input,textarea'),function(x){x.disabled=true});
  };
+ var fail=function(){
+  sending=0;er.textContent='حصلت مشكلة في الإرسال، حاول مرة أخرى';er.hidden=false;bt.disabled=false};
  if(!SHEET_URL){done();return}
- var body=new URLSearchParams({name:nm,attendance:at,message:ms,time:new Date().toISOString()});
- fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:body}).then(done,function(){
-  er.textContent='حصلت مشكلة في الإرسال، حاول مرة أخرى';er.hidden=false;bt.disabled=false});
+ var body=new URLSearchParams();
+ body.append('name',nm);body.append('attendance',at);body.append('message',ms);body.append('time',new Date().toISOString());
+ var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},15000);
+ fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:body,signal:ctl?ctl.signal:undefined}).then(function(){clearTimeout(tm);done()},function(){clearTimeout(tm);fail()});
 })}
 })();
 </script>
